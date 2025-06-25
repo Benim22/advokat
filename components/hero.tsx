@@ -23,13 +23,27 @@ export function Hero({ title, subtitle, ctaText, ctaLink, backgroundVideo }: Her
             muted
             loop
             playsInline
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => {
               console.log("Video failed to load, falling back to gradient background")
+              console.log("Video URL:", backgroundVideo)
               e.currentTarget.style.display = "none"
+              // Show gradient background instead
+              const gradientBg = e.currentTarget.parentElement?.nextElementSibling as HTMLElement
+              if (gradientBg) {
+                gradientBg.style.opacity = "1"
+              }
+            }}
+            onLoadStart={() => {
+              console.log("Video loading started:", backgroundVideo)
+            }}
+            onCanPlay={() => {
+              console.log("Video can play:", backgroundVideo)
             }}
           >
             <source src={backgroundVideo} type="video/mp4" />
+            Din webbläsare stöder inte video-taggen.
           </video>
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/40" />
@@ -44,7 +58,7 @@ export function Hero({ title, subtitle, ctaText, ctaLink, backgroundVideo }: Her
         aria-hidden="true"
       >
         <div
-          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-gray-200 to-gray-400 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue-200 via-purple-200 to-blue-300 opacity-40 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           style={{
             clipPath:
               "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",

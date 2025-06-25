@@ -43,7 +43,7 @@ export default function HomePage() {
         subtitle="Advokat Johan Sjöström erbjuder professionell rådgivning inom alla juridiska områden med över 25 års erfarenhet."
         ctaText="Se våra verksamhetsområden"
         ctaLink="/verksamhet"
-        backgroundVideo="https://videocdn.cdnpk.net/videos/db088421-2fea-5ac4-901e-567f52d79cba/horizontal/previews/clear/large.mp4?token=exp=1750878996~hmac=694710a8e31766c37fdaae2f4a7abfd3db5756a6b406e0ba8ca80e46fa3a1436"
+        backgroundVideo="/hero.mp4"
       />
 
       {/* About Section */}
